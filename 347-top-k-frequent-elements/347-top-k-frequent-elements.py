@@ -14,5 +14,5 @@ class Solution(object):
         for freq in range(larger, 0, -1):
             res.extend(dic[freq])
             if len(res) >= k:
-                break
-        return res if len(res) == k else res[:k]
+                return res[:k]
+        return res[:k]
