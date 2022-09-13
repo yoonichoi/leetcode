@@ -10,13 +10,11 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        curr, length = head, 0
-        while curr:
-            curr, length = curr.next, length+1
-        if length == n:
-            return head.next
-        curr = head
-        for i in range(length-n-1):
-            curr = curr.next
-        curr.next = curr.next.next
+        slow, fast = head, head
+        for i in range(n):
+            fast = fast.next
+        if not fast: return head.next
+        while fast.next:
+            slow, fast = slow.next, fast.next
+        slow.next = slow.next.next
         return head
