@@ -9,7 +9,9 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        prev = None
-        while head:
-            head.next, prev, head = prev, head, head.next
-        return prev
+        def _reverse(head, prev=None):
+            if not head:
+                return prev
+            curr, head.next = head.next, prev
+            return _reverse(curr, head)
+        return _reverse(head)
