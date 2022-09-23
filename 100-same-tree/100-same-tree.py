@@ -11,12 +11,8 @@ class Solution(object):
         :type q: TreeNode
         :rtype: bool
         """
-        stack = [(p, q)]
-        while stack:
-            n1, n2 = stack.pop()
-            if n1 and n2 and n1.val == n2.val:
-                stack.append((n1.left, n2.left))
-                stack.append((n1.right, n2.right))
-            elif n1 != n2:
-                return False
-        return True
+        if not p and not q:
+            return True
+        if not p or not q or p.val != q.val:
+            return False
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
