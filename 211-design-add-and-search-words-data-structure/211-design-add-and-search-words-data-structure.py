@@ -15,11 +15,9 @@ class WordDictionary(object):
         """
         node = self.root
         for c in word:
-            if c in node.dict:
-                node = node.dict[c]
-            else:
+            if c not in node.dict:
                 node.dict[c] = TrieNode()
-                node = node.dict[c]
+            node = node.dict[c]
         node.word = True
 
     def search(self, word):
