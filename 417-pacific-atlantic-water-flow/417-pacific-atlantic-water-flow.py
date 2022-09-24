@@ -6,19 +6,24 @@ class Solution(object):
         """
         if not heights or not heights[0]: return []
         m, n = len(heights), len(heights[0])
-        def bfs(start):
-            q = collections.deque(start)
-            visited = set(start)
-            while q:
-                x, y  = q.popleft()
-                for dx,dy in ((x,y+1),(x,y-1),(x-1,y),(x+1,y)):
-                    if 0<=dx<m and 0<=dy<n and (dx,dy) not in visited \
-                    and heights[dx][dy] >= heights[x][y]:
-                        q.append((dx,dy))
-                        visited.add((dx,dy))
-            return visited
+        p_visited = set()
+        a_visited = set()
         
-        pacific = [(0,c) for c in range(n)] + [(r,0) for r in range(1,m)]
-        atlantic = [(r,n-1) for r in range(m)] + [(m-1, c) for c in range(n-1)]
+        def dfs(i, j, visited):
+            if (i,j) in visited:
+                return
+            visited.add((i,j))
+            for dx, dy in ((1,0),(-1,0),(0,-1),(0,1)):
+                x, y = i+dx, j+dy
+                if 0<=x<m and 0<=y<n:
+                    if heights[x][y] >= heights[i][j]:
+                        dfs(x,y,visited)
+                
+        for i in range(m):
+            dfs(i, 0, p_visited)
+            dfs(i, n-1, a_visited)
+        for j in range(n):
+            dfs(0, j, p_visited)
+            dfs(m-1, j, a_visited)
         
-        return bfs(pacific) & bfs(atlantic)
+        return list(p_visited & a_visited)
