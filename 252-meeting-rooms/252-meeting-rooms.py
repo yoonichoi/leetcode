@@ -5,10 +5,10 @@ class Solution(object):
         :rtype: bool
         """
         if not intervals or len(intervals) == 1: return True
-        intervals = sorted(intervals, key=lambda x:x[0])
-        s,e = intervals[0]
-        for i in intervals[1:]:
-            if i[0] < e:
+        intervals.sort()
+        for i in range(1,len(intervals)):
+            if intervals[i][0] < intervals[i-1][1]:
                 return False
-            s, e = i
         return True
+    
+    
