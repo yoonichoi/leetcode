@@ -14,13 +14,3 @@ class Solution(object):
             else:
                 e += 1
         return cnt
-#         e = ret = 0
-#         start = sorted(i[0] for i in intervals)
-#         end = sorted(i[1] for i in intervals)
-        
-#         for s in range(len(start)):
-#             if start[s] < end[e]: 
-#                 ret += 1
-#             else: 
-#                 e += 1
-#         return ret
