@@ -7,6 +7,8 @@ class Solution(object):
         """
         m, n = len(text1), len(text2)
         dp = [[0]*(n+1) for _ in range(m+1)]
+        print(dp)
+        print([[0]*(n+1)]*(m+1))
         for i in range(1,m+1):
             for j in range(1,n+1):
                 if text1[i-1] == text2[j-1]:
@@ -14,3 +16,4 @@ class Solution(object):
                 else:
                     dp[i][j] = max(dp[i-1][j], dp[i][j-1])
         return dp[m][n]
+    
