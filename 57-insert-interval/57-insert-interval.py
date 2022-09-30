@@ -5,13 +5,15 @@ class Solution(object):
         :type newInterval: List[int]
         :rtype: List[List[int]]
         """
-        s, e = newInterval
         left, right = [], []
+        s, e = newInterval
         for i in intervals:
             if i[1] < s:
-                left += i,
+                left.append(i)
             elif i[0] > e:
-                right += i,
+                right.append(i)
             else:
-                s, e = min(s, i[0]), max(e, i[1])
+                s = min(i[0], s)
+                e = max(i[1], e)
         return left + [[s,e]] + right
+        
