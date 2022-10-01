@@ -13,13 +13,14 @@ class Solution(object):
         :rtype: Node
         """
         if not node: return node
-        q, clones = collections.deque([node]), {node.val:Node(node.val, [])}
+        q, clone = collections.deque([node]), {node.val: Node(node.val, [])}
         while q:
-            cur = q.popleft()
-            cur_clone = clones[cur.val]
-            for ngbr in cur.neighbors:
-                if ngbr.val not in clones:
-                    clones[ngbr.val] = Node(ngbr.val, [])
+            curr = q.popleft()
+            curr_clone = clone[curr.val]
+            for ngbr in curr.neighbors:
+                if ngbr.val not in clone:
+                    clone[ngbr.val] = Node(ngbr.val, [])
                     q.append(ngbr)
-                cur_clone.neighbors.append(clones[ngbr.val])
-        return clones[node.val]
+                curr_clone.neighbors.append(clone[ngbr.val])
+        return clone[node.val]
+        
