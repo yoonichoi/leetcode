@@ -5,13 +5,10 @@ class Solution(object):
         :type k: int
         :rtype: List[List[int]]
         """
-        import heapq
-        heap = []
+        ls = []
         for p in points:
             x, y = p
-            dist = -(x*x+y*y)
-            if len(heap) == k:
-                heapq.heappushpop(heap, (dist, x, y))
-            else:
-                heapq.heappush(heap, (dist, x, y))
-        return [(x,y) for d,x,y in heap]
+            ls.append(([x,y], (x**2 + y**2)**0.5))
+        return [i for i,v in sorted(ls, key=lambda x:x[1])[:k]]
+    
+    
