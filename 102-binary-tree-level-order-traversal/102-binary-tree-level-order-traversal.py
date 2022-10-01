@@ -10,18 +10,13 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
-        res = []
-        q = collections.deque()
-        q.append(root)
-        while q:
-            level = []
-            for i in range(len(q)):
-                node = q.popleft()
-                if node:
-                    level.append(node.val)
-                    q.append(node.left)
-                    q.append(node.right)
-            if level:
-                res.append(level)
-        return res
-        
+        ans, level = [], [root]
+        while root and level:
+            ans.append([node.val for node in level])
+            tmp = []
+            for node in level:
+                if node.left: tmp.append(node.left)
+                if node.right: tmp.append(node.right)
+            level= tmp
+            # level = [child for node in level for child in (node.left, node.right) if child]
+        return ans
