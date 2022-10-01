@@ -18,5 +18,4 @@ class Solution(object):
                 if node.left: tmp.append(node.left)
                 if node.right: tmp.append(node.right)
             level= tmp
-            # level = [child for node in level for child in (node.left, node.right) if child]
         return ans
