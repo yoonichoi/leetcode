@@ -7,22 +7,23 @@ class Solution(object):
         """
         course = [[] for _ in range(numCourses)]
         visited = [0 for _ in range(numCourses)]
-        
-        for prereq in prerequisites:
-            x, y = prereq
+
+        for x,y in prerequisites:
             course[x].append(y)
         
-        def dfs(course, visited ,i):
-            if visited[i] == -1: return False
-            if visited[i] == 1: return True
+        def dfs(i):
+            if visited[i] == -1:
+                return False
+            if visited[i] == 1:
+                return True
             visited[i] = -1
             for j in course[i]:
-                if not dfs(course, visited, j):
+                if not dfs(j):
                     return False
             visited[i] = 1
             return True
         
         for i in range(numCourses):
-            if not dfs(course, visited, i):
+            if not dfs(i):
                 return False
         return True
