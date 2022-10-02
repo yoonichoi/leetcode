@@ -2,7 +2,6 @@ class Trie(object):
 
     def __init__(self):
         self.trie = {}
-        
 
     def insert(self, word):
         """
@@ -15,7 +14,7 @@ class Trie(object):
                 t[c] = {}
             t = t[c]
         t['-'] = True
-               
+        
 
     def search(self, word):
         """
@@ -41,6 +40,7 @@ class Trie(object):
                 return False
             t = t[c]
         return True
+        
 
 
 # Your Trie object will be instantiated and called as such:
