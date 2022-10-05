@@ -5,16 +5,17 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        res = []
-        n = len(candidates)
-        def dfs(cur, cur_sum, idx):
-            if cur_sum > target:
-                return
-            if cur_sum == target:
-                res.append(cur)
-                return
-            for i in range(idx, n):
-                dfs(cur+[candidates[i]], cur_sum + candidates[i], i)
-        dfs([], 0, 0)
-        return res
+        res, n = [], len(candidates)
+        candidates.sort()
         
+        def find(idx, target, path):
+            if target < 0:
+                return True
+            if target == 0:
+                res.append(path)
+                return False
+            for i in range(idx, n):
+                if find(i, target-candidates[i], path+[candidates[i]]):
+                    break
+        find(0, target, [])
+        return res
