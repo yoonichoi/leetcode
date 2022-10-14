@@ -1,16 +1,18 @@
 class MovingAverage:
 
     def __init__(self, size: int):
-        self.lst = []
+        import collections
+        self.lst = collections.deque()
+        self.sum = 0
         self.size = size
         
 
     def next(self, val: int) -> float:
         self.lst.append(val)
-        if len(self.lst) < self.size:
-            return sum(self.lst)/len(self.lst)
-        else:
-            return sum(self.lst[-1*self.size:])/self.size
+        if len(self.lst) > self.size:
+            self.sum -= self.lst.popleft()
+        self.sum += val
+        return self.sum / len(self.lst)
 
 # Your MovingAverage object will be instantiated and called as such:
 # obj = MovingAverage(size)
