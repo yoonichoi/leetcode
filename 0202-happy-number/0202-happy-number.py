@@ -1,7 +1,10 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
         seen = set()
-        while n not in seen:
-            seen.add(n)
+        while n!= 1:
             n = sum([int(i) ** 2 for i in str(n)])
-        return n == 1
+            if n in seen:
+                return False
+            else:
+                seen.add(n)
+        return True
