@@ -3,7 +3,4 @@ class Solution:
         dic = collections.defaultdict(list)
         for w in strs:
             dic[str(sorted(w))].append(w)
-        ans = []
-        for i,v in dic.items():
-            ans.append(v)
-        return ans
+        return list(dic.values())
