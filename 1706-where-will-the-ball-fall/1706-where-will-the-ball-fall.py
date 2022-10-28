@@ -1,12 +1,12 @@
 class Solution:
     def findBall(self, grid: List[List[int]]) -> List[int]:
-        r, c = len(grid), len(grid[0])
-        def drop(i,j):
-            if i == r:
-                return j
-            if j == c-1 and grid[i][j]== 1: return -1
-            if j == 0 and grid[i][j] == -1: return -1
-            if grid[i][j] == 1 and grid[i][j+1] == -1: return -1
-            if grid[i][j] == -1 and grid[i][j-1] == 1: return -1
-            return drop(i+1, j+grid[i][j])
-        return [drop(0,j) for j in range(c)]
+        m, n = len(grid), len(grid[0])
+        def drop(r,c):
+            if r == m: return c
+            elif grid[r][c] == 1 and c+1<n and grid[r][c+1]==1:
+                return drop(r+1, c+1)
+            elif grid[r][c] == -1 and c-1>=0 and grid[r][c-1] == -1:
+                return drop(r+1, c-1)
+            else:
+                return -1
+        return [drop(0,c) for c in range(n)]
