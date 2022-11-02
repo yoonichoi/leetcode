@@ -1,9 +1,9 @@
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         m, n = len(matrix), len(matrix[0])
+        top, bottom, left, right = 0, m-1, 0, n-1
         ans = []
-        left, right, top, bottom = 0, n-1, 0, m-1
-        while left <= right and top <= bottom:
+        while top <= bottom and left <= right:
             for col in range(left, right+1):
                 ans.append(matrix[top][col])
             top += 1
@@ -15,5 +15,5 @@ class Solution:
             bottom -= 1
             for row in range(bottom, top-1, -1):
                 ans.append(matrix[row][left])
-            left +=1
+            left += 1
         return ans[:m*n]
