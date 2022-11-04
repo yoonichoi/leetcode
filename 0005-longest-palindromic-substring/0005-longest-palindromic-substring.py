@@ -1,12 +1,11 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        def helper(s, l, r):
-            while l>=0 and r<len(s) and s[l]==s[r]:
-                l -= 1
-                r += 1
-            return s[l+1:r]
+        def palindrome(s, i, j):
+            while i >= 0 and j < len(s) and s[i]==s[j]:
+                i -= 1
+                j += 1
+            return s[i+1:j]
         res = ''
         for i in range(len(s)):
-            res = max(res, helper(s,i,i), helper(s,i,i+1), key=len)
+            res = max(res, palindrome(s,i,i), palindrome(s,i,i+1), key=len)
         return res
-        
