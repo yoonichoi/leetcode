@@ -1,7 +1,7 @@
 class Solution:
     def minMutation(self, start: str, end: str, bank: List[str]) -> int:
-        def onechanged(a,b):
-            return sum([1 for i in range(len(a)) if a[i]!=b[i]]) == 1
+        def onechange(a,b):
+            return sum([1 for i in range(len(a)) if a[i] != b[i]]) == 1
         q = collections.deque([(start, 0)])
         seen = {start}
         while q:
@@ -9,8 +9,10 @@ class Solution:
             if gene == end:
                 return cnt
             for g in bank:
-                if g not in seen and onechanged(gene, g):
+                if g not in seen and onechange(g, gene):
                     seen.add(g)
                     q.append((g, cnt+1))
         return -1
         
+        
+     
