@@ -10,8 +10,9 @@ class Solution:
                 rmax = height[j]
             if lmax <= rmax:
                 ans += lmax - height[i]
-                i += 1
+                i+=1
             else:
                 ans += rmax - height[j]
-                j -= 1
+                j -=1
         return ans
+        
