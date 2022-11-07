@@ -10,3 +10,5 @@ class Solution:
             else: return -1
         return [drop(0,c) for c in range(n)]
         
+        
+ 
