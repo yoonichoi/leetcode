@@ -18,3 +18,9 @@ class Solution:
             curr.next = ListNode(val)
             curr = curr.next
         return root.next
+        
+        
+        
+        
+        
+    
