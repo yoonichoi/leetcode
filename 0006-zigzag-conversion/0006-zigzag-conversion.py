@@ -3,7 +3,7 @@ class Solution:
         if numRows == 1: return s
         ans = [''] * numRows
         row_idx = 1
-        going_up=True
+        going_up = True
         for c in s:
             ans[row_idx-1] += c
             if row_idx == numRows:
@@ -15,6 +15,9 @@ class Solution:
             else:
                 row_idx -= 1
         return ''.join(ans)
+            
         
         
         
+        
+ 
