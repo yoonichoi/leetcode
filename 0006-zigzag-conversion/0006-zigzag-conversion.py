@@ -8,16 +8,14 @@ class Solution:
             ans[row_idx-1] += c
             if row_idx == numRows:
                 going_up = False
-            elif row_idx == 1:
+            if row_idx == 1:
                 going_up = True
             if going_up:
                 row_idx += 1
             else:
                 row_idx -= 1
         return ''.join(ans)
-            
         
         
         
         
- 
