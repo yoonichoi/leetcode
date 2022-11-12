@@ -6,9 +6,10 @@ class Solution:
                 res.append(path)
                 return
             for i in range(len(nums)):
-                dfs(nums[i:], target-nums[i], path + [nums[i]], res)
+                dfs(nums[i:], target - nums[i], path + [nums[i]], res)
         res = []
         dfs(candidates, target, [], res)
         return res
         
-   
+        
+        
