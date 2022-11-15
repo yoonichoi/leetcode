@@ -43,14 +43,11 @@
 
 class Solution:
     def depthSumInverse(self, nestedList: List[NestedInteger]) -> int:
-        lvlsum, tot = 0, 0
-        q = collections.deque(nestedList)
-        while q:
-            for _ in range(len(q)):
-                curr = q.popleft()
-                if curr.isInteger():
-                    lvlsum += curr.getInteger()
-                else:
-                    q.extend(curr.getList())
-            tot += lvlsum
-        return tot
+        depth, d, res = 1, {}, 0
+        while nestedList:
+            d[depth] = [x.getInteger() for x in nestedList if x.isInteger()]
+            nestedList = sum([x.getList() for x in nestedList if not x.isInteger()],[])
+            depth += 1
+        for currd, values in d.items():
+            res += (depth - currd) * sum(values)
+        return res
