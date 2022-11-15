@@ -46,6 +46,6 @@ class Solution:
         d, res = 1, 0
         while nestedList:
             res += d * sum([i.getInteger() for i in nestedList if i.isInteger()])
-            nestedList = sum([i.getList() for i in nestedList if not i.isInteger()], [])
+            nestedList = sum([i.getList() for i in nestedList if not i.isInteger()],[])
             d += 1
         return res
