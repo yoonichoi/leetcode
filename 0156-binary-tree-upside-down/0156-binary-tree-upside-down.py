@@ -14,4 +14,3 @@ class Solution:
         root.left = None
         root.right = None
         return left
-        
