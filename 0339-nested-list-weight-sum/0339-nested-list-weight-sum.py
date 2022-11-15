@@ -45,7 +45,12 @@ class Solution:
     def depthSum(self, nestedList: List[NestedInteger]) -> int:
         d, res = 1, 0
         while nestedList:
-            res += d * sum([i.getInteger() for i in nestedList if i.isInteger()])
-            nestedList = sum([i.getList() for i in nestedList if not i.isInteger()],[])
+            lv = []
+            for i in nestedList:
+                if i.isInteger():
+                    res += d * i.getInteger()
+                else:
+                    lv.extend(i.getList())
             d += 1
+            nestedList = lv
         return res
