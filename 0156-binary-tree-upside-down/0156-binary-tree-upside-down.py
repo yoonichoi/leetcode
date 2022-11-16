@@ -13,3 +13,4 @@ class Solution:
         root.left.left = root.right
         root.left, root.right = None, None
         return left
+        
