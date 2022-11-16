@@ -13,7 +13,7 @@ class Solution:
             heapq.heappush(heap, (abs(root.val-target), root.val))
             dfs(root.right, target, heap)
         heap = []
-        dfs(root,target,heap)
+        dfs(root, target, heap)
         res = []
         for _ in range(k):
             res.append(heapq.heappop(heap)[1])
