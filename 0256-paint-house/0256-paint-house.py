@@ -1,6 +1,6 @@
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
-        r, b, g = 0, 0, 0
+        r,b,g = 0,0,0
         for cr, cb, cg in costs:
-            r, b, g = min(b,g) + cr, min(r,g)+cb, min(r,b) + cg
+            r,b,g = cr + min(b,g), cb+min(r,g), cg+min(r,b)
         return min(r,b,g)
